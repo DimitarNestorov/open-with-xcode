@@ -31,6 +31,7 @@
 	<h3 id="no-repo-parameter" style="display: none;">No repo parameter!</h3>
 	<h3 id="opening-with-xcode">Opening with Xcode…</h3>
 	<h4 id="if-it-does-not-work" style="display: none;">If it doesn't work click <a href="">here</a></h4>
+	<h4 id="go-back" style="display: none;"><a href="javascript:history.back()">Go back</a></h4>
 	<script type="text/javascript">
 		const params = new URLSearchParams(location.search)
 		const repo = params.get("repo")
@@ -42,6 +43,15 @@
 			const ifItDoesNotWorkHeading = document.getElementById("if-it-does-not-work")
 			ifItDoesNotWorkHeading.querySelector("a").href = xcodeLink
 			ifItDoesNotWorkHeading.style.display = "block"
+
+			if (history.length > 1) {
+				const goBackHeading = document.getElementById("go-back")
+				goBackHeading.style.display = "block"
+				
+				if (document.referrer === "https://github.com/") {
+					goBackHeading.querySelector("a").textContent = "Go back to GitHub"
+				}
+			}
 
 			setTimeout(() => {
 				location = xcodeLink
