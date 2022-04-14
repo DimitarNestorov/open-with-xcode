@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Open with Xcode</title>
+	<style>
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+		}
+
+		h3, h4 {
+			text-align: center;
+		}
+
+		a {
+			color: #3586FF;
+			text-decoration: none;
+		}
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				color: white;
+				background-color: black;
+			}
+		}
+	</style>
+</head>
+<body>
+	<h3 id="no-repo-parameter" style="display: none;">No repo parameter!</h3>
+	<h3 id="opening-with-xcode">Opening with Xcode…</h3>
+	<h4 id="if-it-does-not-work" style="display: none;">If it doesn't work click <a href="">here</a></h4>
+	<script type="text/javascript">
+		const params = new URLSearchParams(location.search)
+		const repo = params.get("repo")
+		if (!repo) {
+			document.getElementById("no-repo-parameter").style.display = "block"
+			document.getElementById("opening-with-xcode").style.display = "none"
+		} else {
+			const xcodeLink = `xcode://clone?repo=${encodeURIComponent(repo)}`
+			const ifItDoesNotWorkHeading = document.getElementById("if-it-does-not-work")
+			ifItDoesNotWorkHeading.querySelector("a").href = xcodeLink
+			ifItDoesNotWorkHeading.style.display = "block"
+
+			setTimeout(() => {
+				location = xcodeLink
+			}, 100)
+		}
+	</script>
+</body>
+</html>
