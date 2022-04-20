@@ -56,7 +56,7 @@
 				const goBackHeading = document.getElementById("go-back")
 				goBackHeading.style.display = "block"
 				
-				if (document.referrer === "https://github.com/") {
+				if (document.referrer && new URL(document.referrer).host === "github.com") {
 					goBackHeading.querySelector("a").textContent = "Go back to GitHub"
 				}
 			}
