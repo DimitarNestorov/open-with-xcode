@@ -4,6 +4,10 @@ In places where you can't use the `xcode://` URL scheme you can use this web app
 
 ## Usage
 
+Visit https://open-with-xcode.vercel.app, enter your repo URL in the input, and click "Generate link".
+
+### Manual usage
+
 Just append a URL encoded link to `https://open-with-xcode.vercel.app/?repo=`
 
 Or if your repo is hosted on GitHub replace `username` and `reponame` in the following link:
